@@ -1,4 +1,4 @@
-const DessertModel = require('../models/dessert.model');
+const DessertModel = require("../models/dessert.model");
 
 const dessertsController = {};
 
@@ -7,7 +7,7 @@ dessertsController.getAllDesserts = async (req, res) => {
     const allDesserts = await DessertModel.find();
     res.status(200).send(allDesserts);
   } catch (error) {
-    res.status(500).send('Error getting desserts', error);
+    res.status(500).send("Error getting desserts", error);
   }
 };
 
@@ -17,10 +17,10 @@ dessertsController.getDessertById = async (req, res) => {
     const dessertFound = await DessertModel.findById(id);
     res.status(200).send(dessertFound);
     if (!dessertFound) {
-      return res.status(404).send({ message: 'User not found' });
+      return res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
-    return res.status(500).send({ message: 'Error creating user' + error });
+    return res.status(500).send({ message: "Error creating user" + error });
   }
 };
 
@@ -33,7 +33,7 @@ dessertsController.createDessert = async (req, res) => {
     const allDesserts = await DessertModel.find(); //cuando se ha actualizado, dame lo que haya en la base de dtaos.
     res.status(200).send(allDesserts);
   } catch (error) {
-    return res.status(500).send({ message: 'Error creating user' + error });
+    return res.status(500).send({ message: "Error creating user" + error });
   }
 };
 
@@ -47,7 +47,7 @@ dessertsController.updateDessert = async (req, res) => {
     const allDesserts = await DessertModel.find(); //leo la lista de usuarios actualizados
     res.status(200).send(allDesserts);
   } catch (error) {
-    return res.status(500).send({ message: 'Error updating user' + error });
+    return res.status(500).send({ message: "Error updating user" + error });
   }
 };
 
