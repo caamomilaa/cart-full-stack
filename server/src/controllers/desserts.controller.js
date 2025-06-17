@@ -42,7 +42,8 @@ dessertsController.updateDessert = async (req, res) => {
   // const newData = req.body;
 
   try {
-    await DessertModel.updateOne({ _id: id }, { $set: { ...req.body } });
+    const counter= req.body.stock
+    await DessertModel.updateOne({ _id: id }, { $inc: { stock: -counter } });
     // Tienes 2 parametors: objeto id, busca el ususario cuyo _id sea igual al id, y haz un set (actualizasr) de todo lo que te envie en el req.boy
     const allDesserts = await DessertModel.find(); //leo la lista de usuarios actualizados
     res.status(200).send(allDesserts);
