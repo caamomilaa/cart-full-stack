@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { PRODUCTS } from './components/constants/products';
+import { PRODUCTS } from './constants/products';
+import Header from './components/header/Header';
 
 const App = () => {
   //estado para los filtros y el carrito
 
   const [filterActive, setFilterActive] = useState('Default');
+  const filteredDesserts = filterDesserts(filterActive);
 
   const desserts = [...PRODUCTS];
   console.log(desserts);
-
-  const filteredDesserts = filterDesserts(filterActive);
 
   const [quantity, setQuantity] = useState(0);
   console.log(quantity);
@@ -18,14 +18,8 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <h1>DESSERTS</h1>
-        <div>
-          <button onClick={() => setFilterActive('default')}>Default</button>
-          <button onClick={() => setFilterActive('name')}>Name</button>
-          <button onClick={() => setFilterActive('price')}>Price</button>
-        </div>
-      </header>
+      <Header filterActive={filterActive} setFilterActive={setFilterActive} />
+
       <main>
         {filteredDesserts.map(dessert => (
           <div key={dessert.id}>
